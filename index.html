@@ -42,10 +42,10 @@
                     </label>
                     <label class="value-label">DATA 1</label>
                     <label class="value-control">
-                        <input class="value-box" type="text" id="fname" name="value_1_2">
+                        <input class="value-box" type="number" type="text" id="value_1_1" name="value_1_1">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button" onclick="">Send data</button>
+                        <button class="confirm-value-button" onclick="send_data_button('1-1')">Send data</button>
                     </label>
                 </div>
                 <div class="led-control">
@@ -56,45 +56,47 @@
                     </label>
                     <label class="value-label">DATA 2</label>
                     <label class="value-control">
-                        <input class="value-box" type="text" id="fname" name="value_1_2">
+                        <input class="value-box" type="number" type="text" id="value_1_2" name="value_1_2">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button" onclick="">Send data</button>
+                        <button class="confirm-value-button" onclick="send_data_button('1-2')"">Send data</button>
                     </label>
                 </div>
             </div>
-            <div class="device-control">
-                <label>Device 2</label>
-                <div class="led-control">
-                    <label style="vertical-align: middle;">LED 1</label>
-                    <label class="switch" style="vertical-align: middle;">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <label class="value-label">DATA 1</label>
-                    <label class="value-control">
-                        <input class="value-box" type="text" id="fname" name="value_1_2">
-                    </label>
-                    <label class="confirm-value-control">
-                        <button class="confirm-value-button" onclick="">Send data</button>
-                    </label>
-                </div>
-                <div class="led-control">
-                    <label style="vertical-align: middle;">LED 2</label>
-                    <label class="switch" style="vertical-align: middle;">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <label class="value-label">DATA 2</label>
-                    <label class="value-control">
-                        <input class="value-box" type="text" id="fname" name="value_1_2">
-                    </label>
-                    <label class="confirm-value-control">
-                        <button class="confirm-value-button" onclick="">Send data</button>
-                    </label>
+            <div class=" device-control">
+                            <label>Device 2</label>
+                            <div class="led-control">
+                                <label id="button_2_1_label" style="vertical-align: middle;">LED 1</label>
+                                <label class="switch" style="vertical-align: middle;">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="value-label">DATA 1</label>
+                                <label class="value-control">
+                                    <input class="value-box" type="number" type="text" id="value_2_1" name="value_2_1">
+                                </label>
+                                <label class="confirm-value-control">
+                                    <button class="confirm-value-button" onclick="send_data_button('2-1')">Send
+                                        data</button>
+                                </label>
+                            </div>
+                            <div class="led-control">
+                                <label id="button_2_2_label" style="vertical-align: middle;">LED 2</label>
+                                <label class="switch" style="vertical-align: middle;">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="value-label">DATA 2</label>
+                                <label class="value-control">
+                                    <input class="value-box" type="number" type="text" id="value_2_2" name="value_2_2">
+                                </label>
+                                <label class="confirm-value-control">
+                                    <button class="confirm-value-button" onclick="send_data_button('2-2')">Send
+                                        data</button>
+                                </label>
+                            </div>
                 </div>
             </div>
-        </div>
     </section>
 </body>
 
@@ -106,5 +108,7 @@
     autoResize();
 </script>
 
+<script src="./script/request.js">
+</script>
 
 </html>
