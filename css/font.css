@@ -1,4 +1,8 @@
 @font-face {
-    font-family: "Raleway";
-    src: url('../font/Raleway-Bold.ttf');
+    font-family: "Montserrat";
+    src: local('/../font/Montserrat-Medium.ttf');
+}
+
+.default-font {
+    font-family: 'Montserrat', sans-serif;
 }

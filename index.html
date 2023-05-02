@@ -7,10 +7,9 @@
     <link rel="icon" href="icon/HCMUT_official_logo.png" />
     <title>Thesis</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/effect.css" />
+    <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
 
@@ -24,7 +23,7 @@
             </div>
         </div>
     </header>
-    <section id="Home" class="home" style="height: 950px;">
+    <section id="Home" class="home" style="height: 1000px;">
         <div>
             <iframe id="grafana_frame"
                 src="http://pifclub.ddns.net/grafana/d/ldCJ1Vy4k/thesis?orgId=1&theme=light&refresh=10s&from=now-30m&to=now&kiosk"
@@ -33,70 +32,76 @@
         </div>
         <div>
             <div class="device-control">
-                <label>Device 1</label>
+                <label class="default-font">Device 1</label>
                 <div class="led-control">
-                    <label style="vertical-align: middle;">LED 1</label>
-                    <label class="switch" style="vertical-align: middle;">
-                        <input type="checkbox" checked>
+                    <label class="default-font align-block-control">LED 1</label>
+                    <label class="switch align-block-control">
+                        <input id="toogle_led_1_1" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
-                    <label class="value-label">DATA 1</label>
+                    <label class="value-label default-font">DATA 1</label>
                     <label class="value-control">
-                        <input class="value-box" type="number" type="text" id="value_1_1" name="value_1_1">
+                        <input class="value-box" type="text" id="value_1_1" name="value_1_1"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button" onclick="send_data_button('1-1')">Send data</button>
+                        <button class="confirm-value-button default-font" onclick="send_data_button('1-1')">Send
+                            data</button>
                     </label>
                 </div>
                 <div class="led-control">
-                    <label style="vertical-align: middle;">LED 2</label>
-                    <label class="switch" style="vertical-align: middle;">
-                        <input type="checkbox" checked>
+                    <label class="default-font align-block-control">LED 2</label>
+                    <label class="switch align-block-control">
+                        <input id="toogle_led_1_2" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
-                    <label class="value-label">DATA 2</label>
+                    <label class="value-label default-font">DATA 2</label>
                     <label class="value-control">
-                        <input class="value-box" type="number" type="text" id="value_1_2" name="value_1_2">
+                        <input class="value-box" type="text" id="value_1_2" name="value_1_2"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button" onclick="send_data_button('1-2')"">Send data</button>
+                        <button class="confirm-value-button default-font" onclick="send_data_button('1-2')">Send
+                            data</button>
                     </label>
                 </div>
             </div>
             <div class=" device-control">
-                            <label>Device 2</label>
-                            <div class="led-control">
-                                <label id="button_2_1_label" style="vertical-align: middle;">LED 1</label>
-                                <label class="switch" style="vertical-align: middle;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                                <label class="value-label">DATA 1</label>
-                                <label class="value-control">
-                                    <input class="value-box" type="number" type="text" id="value_2_1" name="value_2_1">
-                                </label>
-                                <label class="confirm-value-control">
-                                    <button class="confirm-value-button" onclick="send_data_button('2-1')">Send
-                                        data</button>
-                                </label>
-                            </div>
-                            <div class="led-control">
-                                <label id="button_2_2_label" style="vertical-align: middle;">LED 2</label>
-                                <label class="switch" style="vertical-align: middle;">
-                                    <input type="checkbox" checked>
-                                    <span class="slider round"></span>
-                                </label>
-                                <label class="value-label">DATA 2</label>
-                                <label class="value-control">
-                                    <input class="value-box" type="number" type="text" id="value_2_2" name="value_2_2">
-                                </label>
-                                <label class="confirm-value-control">
-                                    <button class="confirm-value-button" onclick="send_data_button('2-2')">Send
-                                        data</button>
-                                </label>
-                            </div>
+                <label class="default-font">Device 2</label>
+                <div class="led-control">
+                    <label id="button_2_1_label" class="default-font align-block-control">LED 1</label>
+                    <label class="switch align-block-control">
+                        <input id="toogle_led_2_1" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <label class="value-label default-font">DATA 1</label>
+                    <label class="value-control">
+                        <input class="value-box" type="text" id="value_2_1" name="value_2_1"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </label>
+                    <label class="confirm-value-control">
+                        <button class="confirm-value-button default-font" onclick="send_data_button('2-1')">Send
+                            data</button>
+                    </label>
+                </div>
+                <div class="led-control">
+                    <label id="button_2_2_label" class="default-font align-block-control">LED 2</label>
+                    <label class="switch align-block-control">
+                        <input id="toogle_led_2_2" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <label class="value-label default-font">DATA 2</label>
+                    <label class="value-control">
+                        <input class="value-box" type="text" id="value_2_2" name="value_2_2"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </label>
+                    <label class="confirm-value-control">
+                        <button class="confirm-value-button default-font" onclick="send_data_button('2-2')">Send
+                            data</button>
+                    </label>
                 </div>
             </div>
+        </div>
     </section>
 </body>
 
@@ -108,7 +113,11 @@
     autoResize();
 </script>
 
-<script src="./script/request.js">
-</script>
+<script src="./script/pop_up.js"></script>
+<script src="./script/env.js"></script>
+<script src="./script/body_generate.js"></script>
+<script src="./script/http_api.js"></script>
+<script src="./script/request.js"></script>
+<script src="./script/toogle.js"></script>
 
 </html>
