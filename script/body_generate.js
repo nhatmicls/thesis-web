@@ -1,5 +1,5 @@
 function body_generate(target_control, object_control, status) {
-    const body = {
+    let body = {
         "data": {
             "target_control": "1",
             "object_control": "2",

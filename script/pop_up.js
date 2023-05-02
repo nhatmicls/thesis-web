@@ -1,4 +1,4 @@
 function warning(text) {
-    confirm(text)
-    return
+    confirm(text);
+    return;
 }
