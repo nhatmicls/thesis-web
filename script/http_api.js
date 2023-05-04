@@ -1,24 +1,7 @@
-function request_control(url, body) {
+function request_control(url, body, handle, from, action, state) {
     let return_data;
 
     fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(body), // string or object
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-        // .then(response => response.json())
-        .then(response => { console.log(response) })
-        .catch((err) => { console.log(err) })
-        .finally(console.log("Connection closed"))
-        ;
-
-    return return_data
-}
-
-async function request_database(url, body) {
-    let test = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(body), // string or object
         headers: {
@@ -27,13 +10,29 @@ async function request_database(url, body) {
         }
     })
         .then(response => response.json())
-        .then(response => { update_bootstrap_state(response) })
+        .then(response => { handle(response, from, action, state) })
         .catch((err) => { console.log(err) })
-        .finally(console.log("Connection closed"))
         ;
-    // test.re
-    // let b = test.text()
-    // console.log(test.status)
-    // console.log(b)
+
+    return return_data
+}
+
+async function request_database(url, body, handle) {
+    await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body), // string or object
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(response => response.json())
+        .then(response => {
+            if (handle !== undefined) {
+                handle(response);
+            }
+        })
+        .catch((err) => { console.log(err) })
+        ;
 }
 

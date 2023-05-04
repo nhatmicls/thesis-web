@@ -36,32 +36,34 @@
                 <div class="led-control">
                     <label class="default-font align-block-control">LED 1</label>
                     <label class="switch align-block-control">
-                        <input id="toogle_led_1_1" type="checkbox" checked>
+                        <input id="toggleLed_1_1" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                     <label class="value-label default-font">DATA 1</label>
                     <label class="value-control">
                         <input class="value-box" type="text" id="value_1_1" name="value_1_1"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            value="0">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button default-font" onclick="send_data_button('1-1')">Send
+                        <button class="confirm-value-button default-font" onclick="send_data_button('value_1_1')">Send
                             data</button>
                     </label>
                 </div>
                 <div class="led-control">
                     <label class="default-font align-block-control">LED 2</label>
                     <label class="switch align-block-control">
-                        <input id="toogle_led_1_2" type="checkbox" checked>
+                        <input id="toggleLed_1_2" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                     <label class="value-label default-font">DATA 2</label>
                     <label class="value-control">
                         <input class="value-box" type="text" id="value_1_2" name="value_1_2"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            value="0">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button default-font" onclick="send_data_button('1-2')">Send
+                        <button class="confirm-value-button default-font" onclick="send_data_button('value_1_2')">Send
                             data</button>
                     </label>
                 </div>
@@ -71,32 +73,34 @@
                 <div class="led-control">
                     <label id="button_2_1_label" class="default-font align-block-control">LED 1</label>
                     <label class="switch align-block-control">
-                        <input id="toogle_led_2_1" type="checkbox" checked>
+                        <input id="toggleLed_2_1" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                     <label class="value-label default-font">DATA 1</label>
                     <label class="value-control">
                         <input class="value-box" type="text" id="value_2_1" name="value_2_1"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            value="0">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button default-font" onclick="send_data_button('2-1')">Send
+                        <button class="confirm-value-button default-font" onclick="send_data_button('value_2_1')">Send
                             data</button>
                     </label>
                 </div>
                 <div class="led-control">
                     <label id="button_2_2_label" class="default-font align-block-control">LED 2</label>
                     <label class="switch align-block-control">
-                        <input id="toogle_led_2_2" type="checkbox" checked>
+                        <input id="toggleLed_2_2" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                     <label class="value-label default-font">DATA 2</label>
                     <label class="value-control">
                         <input class="value-box" type="text" id="value_2_2" name="value_2_2"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            value="0">
                     </label>
                     <label class="confirm-value-control">
-                        <button class="confirm-value-button default-font" onclick="send_data_button('2-2')">Send
+                        <button class="confirm-value-button default-font" onclick="send_data_button('value_2_2')">Send
                             data</button>
                     </label>
                 </div>
@@ -119,6 +123,7 @@
 <script src="./script/body_generate.js"></script>
 <script src="./script/http_api.js"></script>
 <script src="./script/request.js"></script>
-<script src="./script/toogle.js"></script>
+<script src="./script/control.js"></script>
+<script src="./script/self_update.js"></script>
 
 </html>

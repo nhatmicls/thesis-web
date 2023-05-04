@@ -1,28 +1,40 @@
-const input_text_1_1 = document.getElementById("value_1_1");
-const input_text_1_2 = document.getElementById("value_1_2");
-const input_text_2_1 = document.getElementById("value_2_1");
-const input_text_2_2 = document.getElementById("value_2_2");
-
-function verify_value_input(value) {
-    if (value > 65535) {
-        warning("Value must be lower than 65535");
-        return 0;
+function request_control_respond_handle(response, from, action, state) {
+    if (response["status"] === 408) {
+        controlTimeOut_popup("Can not send control command");
+        if (action === "led") {
+            console.log(from)
+            document.getElementById(from).checked = !state;
+            document.getElementById(from).disabled = false;
+        }
     }
-    return 1;
 }
 
-function send_data_button(button) {
-    if (button === "1-1" && verify_value_input(input_text_1_1.value) === 1) {
-        request_control(endpoint, body_generate("device_1", "data_1", input_text_1_1.value.toString()));
+function verify_value_input(value) {
+    if (value > 65535) { return 0; }
+    else { return 1; }
+}
+
+function request_control_verify(from, action, state) {
+    let data = "";
+    const device_name_location = from.indexOf("_");
+    const block_data_location = from.indexOf("_", device_name_location);
+    const device_name = "device_" + from.charAt(device_name_location + 1);
+    const block_data = action + "_" + from.charAt(block_data_location + 1);
+
+
+    if (action === "led") {
+        if (state === true) { data = "1"; }
+        else if (state === false) { data = "0"; }
     }
-    else if (button === "1-2" && verify_value_input(input_text_1_2.value) === 1) {
-        request_control(endpoint, body_generate("device_1", "data_2", input_text_1_2.value.toString()));
+    else if (action === "data") {
+        data = document.getElementById(from).value.toString();
     }
-    else if (button === "2-1" && verify_value_input(input_text_2_1.value) === 1) {
-        request_control(endpoint, body_generate("device_2", "data_1", input_text_2_1.value.toString()));
+
+    if (verify_value_input(Number(data)) === 1) {
+        request_control(endpoint, body_generate(device_name, block_data, data), request_control_respond_handle, from, action, state);
     }
-    else if (button === "2-2" && verify_value_input(input_text_2_2.value) === 1) {
-        request_control(endpoint, body_generate("device_2", "data_2", input_text_2_2.value.toString()));
+    else {
+        warning_popup("Value must be lower than 65535");
     }
-    else { }
+
 }

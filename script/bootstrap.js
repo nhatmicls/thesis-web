@@ -1,4 +1,6 @@
-function get_query_url() {
+// import { database_endpoint } from "./env";
+
+function get_bootstrap_query_url() {
     const url = database_endpoint;
     let list_url = [];
     list_url.push(url.concat("?query=led_1_",));
@@ -31,14 +33,17 @@ function update_bootstrap_state(data) {
             toogle.checked = false;
         }
     })
-
-    console.log(data["data"]["result"])
 }
 
 function bootstrap_index() {
-    const list_url = get_query_url();
+    document.getElementById("toggleLed_1_1").checked = false
+    document.getElementById("toggleLed_1_2").checked = false
+    document.getElementById("toggleLed_2_1").checked = false
+    document.getElementById("toggleLed_2_2").checked = false
+
+    const list_url = get_bootstrap_query_url();
 
     list_url.forEach(element => {
-        request_database(element, {});
+        request_database(element, {}, update_bootstrap_state);
     });
 }
