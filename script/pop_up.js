@@ -12,8 +12,6 @@ function lostconnect_popup(device_name) {
 
     if (device_name !== undefined) {
         device_name.forEach(element => {
-            console.log(device_name)
-
             error_notificate = error_notificate.concat(element)
 
             if (device_name.indexOf(element) !== device_name.length - 1) {

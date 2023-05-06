@@ -35,12 +35,24 @@ function verify_disconnect_device(response) {
     }
 }
 
+function alert_update(body) {
+    if (Object.keys(body).length > 0) {
+        let err_string = body["type"].toUpperCase() + " ";
+        err_string = err_string.concat(body["ERR"], " at ", body["device_SN"]);
+        alert(err_string);
+    }
+}
+
 function verify_connection() {
     const query_list = get_connection_query_url();
 
     query_list.forEach(element => {
         request_database(element, {}, verify_disconnect_device);
     })
+}
+
+function check_alert() {
+    request_alert(alert_endpoint, alert_update);
 }
 
 setInterval(function () {
@@ -50,3 +62,7 @@ setInterval(function () {
         disconnect_noti_ack = 0;
     }
 }, 5000); // Interval 5s
+
+setInterval(function () {
+    check_alert();
+}, 1000); // Interval 1s

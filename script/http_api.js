@@ -36,3 +36,20 @@ async function request_database(url, body, handle) {
         ;
 }
 
+function request_alert(url, handle) {
+    let return_data;
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(response => response.json())
+        .then(response => { handle(response) })
+        .catch((err) => { console.log(err) })
+        ;
+
+    return return_data
+}
