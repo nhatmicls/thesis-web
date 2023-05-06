@@ -13,7 +13,7 @@ function update_bootstrap_state(data) {
     const object_result = data["data"]["result"]
 
     object_result.forEach(element => {
-        let object_name = "toogle_led_"
+        let object_name = "toggleLed_"
         if (element["metric"]["device_SN"] === "device_1") {
             object_name = object_name.concat("1_")
         }
@@ -27,10 +27,10 @@ function update_bootstrap_state(data) {
             object_name = object_name.concat("2")
         }
 
-        const toogle = document.getElementById(object_name)
-        if (element["value"]["1"] === "1") { toogle.checked = true; }
+        const toggle = document.getElementById(object_name)
+        if (element["value"]["1"] === "1") { toggle.checked = true; }
         else if (element["value"]["1"] === "0") {
-            toogle.checked = false;
+            toggle.checked = false;
         }
     })
 }

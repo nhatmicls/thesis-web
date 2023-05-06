@@ -4,9 +4,9 @@ function request_control_respond_handle(response, from, action, state) {
         if (action === "led") {
             console.log(from)
             document.getElementById(from).checked = !state;
-            document.getElementById(from).disabled = false;
         }
     }
+    document.getElementById(from).disabled = false;
 }
 
 function verify_value_input(value) {
@@ -17,7 +17,7 @@ function verify_value_input(value) {
 function request_control_verify(from, action, state) {
     let data = "";
     const device_name_location = from.indexOf("_");
-    const block_data_location = from.indexOf("_", device_name_location);
+    const block_data_location = from.indexOf("_", device_name_location + 1);
     const device_name = "device_" + from.charAt(device_name_location + 1);
     const block_data = action + "_" + from.charAt(block_data_location + 1);
 
