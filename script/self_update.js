@@ -2,6 +2,7 @@
 
 let disconnect_noti = 0
 let disconnect_noti_ack = 0
+let control_ack_queue = []
 
 //  { disconnect_noti_ack as "disconnect_noti"};
 
@@ -64,24 +65,49 @@ function check_alert() {
     request_alert(alert_endpoint, alert_update);
 }
 
-function update_toggle_button(response) {
+function _auto_update_data(response) {
     const result = response["data"]["result"]
     if (result.length > 0) {
-        console.log(result);
         result.forEach(element => {
             const device_SN = element["metric"]["device_SN"];
             const name = element["metric"]["__name__"];
             const dash_deviceSN_location = device_SN.indexOf("_");
             const dash_name_location = name.indexOf("_");
             let toggle_name = "toggleLed_" + device_SN.charAt(dash_deviceSN_location + 1) + "_" + name.charAt(dash_name_location + 1);
-            if (element["value"][1] == "1") {
+            if (element["value"][1] === "1" && control_ack_queue.indexOf(toggle_name) === -1) {
                 document.getElementById(toggle_name).checked = true;
             }
-            else {
+            else if (element["value"][1] === "0" && control_ack_queue.indexOf(toggle_name) === -1) {
                 document.getElementById(toggle_name).checked = false;
             }
         });
     }
+}
+
+function _verify_state_toggle(response) {
+    const result = response["data"]["result"]
+    if (result.length > 0) {
+        result.forEach(element => {
+            const device_SN = element["metric"]["device_SN"];
+            const name = element["metric"]["__name__"];
+            const dash_deviceSN_location = device_SN.indexOf("_");
+            const dash_name_location = name.indexOf("_");
+            const toggle_name = "toggleLed_" + device_SN.charAt(dash_deviceSN_location + 1) + "_" + name.charAt(dash_name_location + 1);
+            const current_state = (+document.getElementById(toggle_name).checked).toString()
+            if (element["value"][1] === current_state && control_ack_queue.indexOf(toggle_name) > -1) {
+                control_ack_queue.splice(control_ack_queue.indexOf(toggle_name), 1)
+            }
+        });
+    }
+}
+
+function verify_state_toggle() {
+    const query_list = get_toggle_query_url()
+
+    //Check toggle button
+    query_list.forEach(element => {
+        request_database(element, {}, _verify_state_toggle);
+    })
 }
 
 function auto_update_data() {
@@ -89,7 +115,7 @@ function auto_update_data() {
 
     //Check toggle button
     query_list.forEach(element => {
-        request_database(element, {}, update_toggle_button);
+        request_database(element, {}, _auto_update_data);
     })
 }
 
@@ -106,6 +132,7 @@ setInterval(function () {
 }, 1000); // Interval 1s
 
 setInterval(function () {
-    auto_update_data();
+    if (control_ack_queue.length > 0) { verify_state_toggle(); }
+    else { auto_update_data(); }
 }, 1000); // Interval 1s
 

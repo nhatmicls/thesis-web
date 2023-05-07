@@ -8,7 +8,7 @@ function send_data_button(button) {
 }
 
 toggle_1.addEventListener('change', function () {
-    this.disabled = true
+    this.disabled = true;
     request_control_verify("toggleLed_1_1", "led", this.checked);
 });
 
